@@ -304,10 +304,6 @@ app.post('/api/registerteamevent', async (req, res) => {
     }
  });
 
- app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'project', 'dist', 'about.html'));
- })
-
 
  app.post('/api/checkrefral',(req,res)=>{
    let referal_Code= req.body;

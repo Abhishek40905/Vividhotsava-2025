@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import cors from 'cors';
-import {connectDB,emailExists,createvvid,getvvid,createCAId,referalCode_exists,checkForMaxEvents} from './db/database.js';
+import {connectDB,emailExists,createvvid,getvvid,createCAId,referalCode_exists,checkForMaxEvents} from './database.js';
 import { configDotenv } from 'dotenv';
 import bodyParser from 'body-parser';
 import multer from 'multer';

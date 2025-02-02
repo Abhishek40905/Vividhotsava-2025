@@ -4,8 +4,7 @@ const pool = mysql.createPool({
     host:"srv1873.hstgr.io",
     user: "u541412471_root", 
     password: "N$pIYW&VzQ09",
-    database: "u541412471_fest",
-    port:3306
+    database: "u541412471_fest"
 });
 
 const connectDB = async () => {

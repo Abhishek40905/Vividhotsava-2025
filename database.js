@@ -3,7 +3,7 @@ import mysql from "mysql2/promise";
 const pool = mysql.createPool({
     host:"srv1873.hstgr.io",
     user: "u541412471_root", 
-    password: "N$pIYW&VzQ09",
+    password: "qwertyY1234#",
     database: "u541412471_fest",
     waitForConnections: true
 });

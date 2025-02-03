@@ -1,5 +1,6 @@
 import mysql from "mysql2/promise"; 
 
+
 const pool = mysql.createPool({
     host:"srv1873.hstgr.io",
     user: "u541412471_root", 
@@ -7,21 +8,9 @@ const pool = mysql.createPool({
     database: "u541412471_fest",
     port:3306
 });
-
-const connectDB = async () => {
-    try {
-        const connection = await pool.getConnection();
-        console.log(`MySQL database connected with connection ID: ${connection.threadId}`);
-        return connection;
-    } catch (error) {
-        console.error("MySQL connection failed due to:", error);
-        throw error; 
-    }
-};
-
-async function checkForMaxEvents(vv_id){
+async function checkForMaxEvents(vv_id){   
     let eventsCount=0;
-    //events from solo events data
+
     console.log("Checking Solo events");
     const rows_solo = await pool.query('SELECT * FROM soloevents_data WHERE vv_id = ?', [vv_id]);
     for(let i=0;i<rows_solo[0].length;i++){
@@ -48,10 +37,20 @@ async function checkForMaxEvents(vv_id){
         if(rows[0][i].member_7==vv_id){vv_idInmembersCount+=1;}
         if(vv_idInmembersCount>=1){if(rows[0][i].leader!=vv_id){eventsCount+=1;console.log(rows[0][i]);}}// if leader is part of same team ,problem solved
     }
-
+    console.log(eventsCount);
+    
     return eventsCount;
 }
-
+const connectDB = async () => {
+    try {
+        const connection = await pool.getConnection();
+        console.log(`MySQL database connected with connection ID: ${connection.threadId}`);
+        return connection;
+    } catch (error) {
+        console.error("MySQL connection failed due to:", error);
+        throw error; 
+    }
+};
 
 async function referalCode_exists(referal_Code){
     try{
@@ -143,4 +142,4 @@ const getvvid = async (email) => {
 };
 
 
-export { connectDB, emailExists,createvvid,getvvid,createCAId,referalCode_exists,checkForMaxEvents };
+export { connectDB, emailExists,createvvid,getvvid,createCAId,referalCode_exists,checkForMaxEvents};

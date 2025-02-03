@@ -52,8 +52,6 @@ const upload = multer({ storage: multer.memoryStorage() });
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '..', 'project', 'dist')));
-app.use(express.static(path.join(__dirname, "../project/dist")));
 
 app.post('/checkevents',(req,res)=>{
     const vv_id=req.body;
@@ -69,11 +67,7 @@ function generateSBIpaymentUrl(orderId, amount) {
     return `https://sbiepay.com/payment?orderId=${orderId}&amount=${amount}&callbackUrl=http://localhost:3000/api/payment-callback`;
   }
 
-  app.get('*', (req, res) => {
-    console.log(req.ip);
-    
-    res.sendFile(path.join(__dirname, "../project/dist", "index.html"));
-  });
+ 
 
 
 app.post('/api/emaillogin', async(req,res) => {

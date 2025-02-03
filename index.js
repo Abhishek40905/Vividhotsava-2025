@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import cors from 'cors';
-import {connectDB,emailExists,createvvid,getvvid,createCAId,referalCode_exists,checkForMaxEvents} from './database.js';
+import {connectDB,emailExists,createvvid,getvvid,createCAId,referalCode_exists,checkForMaxEvents} from './src/db/database.js';
 import { configDotenv } from 'dotenv';
 import bodyParser from 'body-parser';
 import multer from 'multer';
@@ -324,4 +324,3 @@ app.get('/yp',(req,res)=>{
 app.listen(3000, () => {
     console.log(`Server is running on port 3000`);
 });
-
